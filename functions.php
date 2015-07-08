@@ -120,7 +120,7 @@ function tekserve_studio_override_carya_inline_styling() {
         .tekserve-studio .footer { background: transparent; }
         <?php 
         $footer_bg_styles = 'background-color: #';
-        $footer_bg_colors = cAc_css2rgba( $option_values['footer_bg'], '0.6' );
+        $footer_bg_colors = cAc_css2rgba( $option_values['footer_bg'], '0.8' );
         $footer_bg_styles .= $footer_bg_colors['hex'] . ';
         background-color: ';
         $footer_bg_styles .= $footer_bg_colors['rgba'] . ';';

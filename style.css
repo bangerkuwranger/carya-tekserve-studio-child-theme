@@ -218,6 +218,11 @@ body.tekserve-studio {
 	display: inline-block;
 	margin-left: 1em;
 	font-size: .75em;
+	transition: all .25s ease-in-out;
+}
+
+.tekserve-studio .footer .fixed-footer.show-footer .button-expand:hover {
+	background: #fff;
 }
 
 .tekserve-studio .footer .fixed-footer .row {
