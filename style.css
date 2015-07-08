@@ -23,3 +23,252 @@ The above copyright notice and this permission notice shall be included in all c
  
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
+
+
+/*** Default Typography Overrides ***/
+
+body.tekserve-studio {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+	font-weight: 300;
+}
+
+.tekserve-studio h1,
+.tekserve-studio h2,
+.tekserve-studio h3 {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Merriweather', Arial, sans-serif;
+	font-weight: 400;
+}
+
+.tekserve-studio .navigation {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+}
+
+.tekserve-studio .section-title h2 {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+}
+
+.tekserve-studio .block-title h3 {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+}
+
+.tekserve-studio .category-title {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Merriweather', Arial, sans-serif;
+}
+
+.tekserve-studio .category .post-entry p {
+    font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .post-header-meta {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+}
+
+.tekserve-studio .post-content p {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .tags > a {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .author-info h4 {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'Merriweather', Arial, sans-serif;
+}
+
+.tekserve-studio .author-info p {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .comment-author-name {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'Merriweather', Arial, sans-serif;
+}
+
+.tekserve-studio .comment-body p {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .comment-form input[type="text"],
+.tekserve-studio .comment-form textarea {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'Merriweather', Arial, sans-serif;
+}
+
+.tekserve-studio .widget-title h3 {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+}
+
+.tekserve-studio .popular-feed h3 a:before {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Merriweather', Arial, sans-serif;
+}
+
+.tekserve-studio .subscribe p {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .copyrights {
+   font-family: 'Gotham SSm A', 'Gotham SSm B', 'PT Sans', Arial, sans-serif;
+}
+
+.tekserve-studio .error b,
+.tekserve-studio .error h1 {
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+}
+
+
+
+/*** Navigation ***/
+
+.tekserve-studio .header {
+	-webkit-box-shadow: 0px 4px 18px 0px rgba(68,68,68,0.2);
+	-moz-box-shadow: 0px 4px 18px 0px rgba(68,68,68,0.2);
+	box-shadow: 0px 4px 18px 0px rgba(68,68,68,0.2);
+}
+
+.tekserve-studio .menu > li,
+.tekserve-studio .menu > li:first-child {
+	border: 0;
+}
+
+.tekserve-studio .menu > li a {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+.tekserve-studio .navigation .logo a {
+	font-size: 32px;
+	letter-spacing: .1em;
+	font-weight: 500;
+}
+
+
+
+/*** Titles ***/
+
+.tekserve-studio h1 {
+	font-size: 48px;
+}
+
+.tekserve-studio .text-capitalize {
+	text-transform: uppercase;
+}
+
+.tekserve-studio .category-title {
+	font-size: 48px;
+	border: 0;
+}
+
+.tekserve-studio .category-title:after {
+	border: 0 solid #000;
+	border-bottom-width: 4px;
+	content: '';
+	width: 2.5em;
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 1em;
+	margin-bottom: 1em;
+}
+
+
+
+/*** Single Page ***/
+
+.tekserve-studio.page .content article p {
+	font-weight: 200;
+	font-size: 28px;
+	text-align: justify;
+}
+
+
+
+/*** Footer ***/
+
+.tekserve-studio .footer {
+	margin-top: 0;
+}
+
+.tekserve-studio .footer .legal {
+	margin-bottom: 120px;
+}
+
+.tekserve-studio .footer .fixed-footer {
+  min-width: 100%;
+  position: fixed;
+  bottom: -320px;
+  z-index: 999;
+  transition: all .2s ease-in-out;
+}
+
+.tekserve-studio .footer .fixed-footer.show-footer {
+	bottom: 0;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.tekserve-studio .footer .fixed-footer.show-footer .tekserve-studio-sliding-footer-top {
+	margin-top: 2em;
+	text-align: center;
+}
+
+.tekserve-studio .footer .fixed-footer.show-footer .button-expand {
+	text-transform: uppercase;
+	background: rgba(255,255,255,0.6);
+	border: 2px solid #000;
+	padding: .5em 1em;
+	display: inline-block;
+	margin-left: 1em;
+	font-size: .75em;
+}
+
+.tekserve-studio .footer .fixed-footer .row {
+	margin: 0 auto;
+	
+}
+
+
+
+
+
+/*** Responsive Structure ***/
+
+@media (min-width: 480px) {
+
+	.tekserve-studio .footer .fixed-footer .row {
+	  width: 480px;
+	  padding 0;
+	}
+
+}
+
+@media (min-width: 768px) {
+	.tekserve-studio .footer .fixed-footer .row {
+	  width: 640px;
+	}
+
+}
+
+@media (min-width: 992px) {
+
+	.tekserve-studio .footer .fixed-footer .row {
+	  width: 960px;
+	  padding: 0 1em;
+	}
+
+}
+
+@media (min-width: 1200px) {
+
+	.tekserve-studio .footer .fixed-footer .row {
+	  width: 960px;
+	}
+
+}
+
+@media (min-width: 1400px) {
+
+	.tekserve-studio .footer .fixed-footer .row,
+	.tekserve-studio .container {
+		width: 1280px;
+	}
+
+}
