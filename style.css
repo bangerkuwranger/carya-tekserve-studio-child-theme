@@ -140,6 +140,26 @@ body.tekserve-studio {
 	font-weight: 500;
 }
 
+/* Responsive */
+
+@media (max-width: 1024px) {
+
+	.tekserve-studio .navigation .logo a {
+		font-size: 24px;
+		line-height: 44px;
+	}
+
+}
+
+@media (max-width: 500px) {
+
+	.tekserve-studio .navigation .logo a,
+	.tekserve-studio .menu > li a {
+		font-size: 20px;
+	}
+
+}
+
 
 
 /*** Titles ***/
@@ -240,7 +260,7 @@ body.tekserve-studio {
 
 	.tekserve-studio .footer .fixed-footer .row {
 	  width: 480px;
-	  padding 0;
+	  padding: 0;
 	}
 
 }

@@ -166,7 +166,7 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		parent::__construct(
 			'tekserve_studio_sliding_footer', // Base ID
 			__('Sliding Footer Form'), // Name
-			array( 'description' => 'Given a target (fixed) element selector and a button element selector, shows active content in target when button is clicked and expands to fill screen. Optional close button and open button html.' ) // Args
+			array( 'description' => 'Given a target (fixed) element selector and a button element, shows active content in target when button is clicked and expands to fill screen. Optional close button and open button html.' ) // Args
 		);
 		
 		// include js
@@ -188,7 +188,7 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		}
 		else {
 		
-			$alttext = 'Hide';
+			$alttext = '';
 	
 		}	//end if( $instance['alttext'] ) *****Implement in form*****
 		if( $instance['target'] ) {
@@ -208,7 +208,7 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		}
 		else {
 		
-			$button = '.button-expand';
+			$button = 'Learn More';
 	
 		}	//end if( $instance['button'] )
 		if( $instance['top_content'] ) {
@@ -218,7 +218,7 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		}
 		else {
 		
-			$top_content = '<span class="button-expand"><i class="fa fa-envelope-o"></i> SUBSCRIBE</span>';
+			$top_content = '<span class="button-expand"><i class="fa fa-envelope-o"></i> Sign Up</span>';
 	
 		}	//end if( $instance['top_content'] )
 		if( $instance['bottom_content'] ) {
@@ -239,16 +239,13 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		
 		//pass target array to js
 		echo '<script type="text/javascript">
-			tekserveStudioSlidingFooter = { "target":"' . $target . '","button":"' . $button . '","alttext":"' . $alttext . '" };
+			tekserveStudioSlidingFooter = { "target":"' . $target . '","alttext":"' . $alttext . '" };
 		</script>';
 		 
 		//link to display bottom content
 		echo '
 		<div class="tekserve-studio-sliding-footer-top">
 			' . $top_content . '
-			<div class="tekserve-studio-sliding-footer-close">
-				<i class="fa fa-times-circle"></i>
-			</div>
 		</div>';
 		
 		//the bottom content iteself
@@ -264,11 +261,16 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 				
 				echo '
 				</div>
-				<div class="tekserve-studio-sliding-footer-buttons">
-					<div class="tekserve-studio-sliding-footer-close">
-						<i class="fa fa-times-circle"></i>
-					</div>
-				</div>
+				
+			</div>
+		</div>';
+		echo '
+		<div class="tekserve-studio-sliding-footer-buttons">
+			<span class="button-expand sliding-footer-trigger">' .
+			$button
+			. '</span>
+			<div class="tekserve-studio-sliding-footer-close">
+				<i class="fa fa-times-circle"></i>
 			</div>
 		</div>';
 		
@@ -287,6 +289,7 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		
 			 $target = trim( $instance['target'] );
 			 $button = trim( $instance['button'] );
+			 $alttext = trim( $instance['alttext'] );
 			 $bottom_content = trim( base64_decode( $instance['bottom_content'] ) );
 			 $top_content = trim( base64_decode( $instance['top_content'] ) );
 		
@@ -294,8 +297,9 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		else {
 		
 			 $target = '.fixed-footer';
-			 $button = '.button-expand';
-			 $top_content = '<span class="button-expand"><i class="fa fa-envelope-o"></i> SUBSCRIBE</span>';
+			 $button = 'Sign Up';
+			 $alttext = '';
+			 $top_content = 'Subscribe to our Mailing List';
 			 $bottom_content = '<h3>Enter Your Email Address</h3>';
 		
 		}	//end if( $instance)
@@ -303,13 +307,18 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 		//output form
 		echo '
 		<p>
-			<label for="' . $this->get_field_id( 'target' ) . '">Enter the CSS selector for the element that will contain the content and slide</label>
-			<input style="width: 100%" id="' . $this->get_field_id( 'target' ) . '" name="' . $this->get_field_name( 'target' ) . '" placeholder="' . $target . '" />
+			<label for="' . $this->get_field_id( 'target' ) . '">Enter the CSS selector for the element that will contain the content and slider</label>
+			<input style="width: 100%" id="' . $this->get_field_id( 'target' ) . '" name="' . $this->get_field_name( 'target' ) . '" value="' . $target . '" />
 		</p>';
 		echo '
 		<p>
-			<label for="' . $this->get_field_id( 'button' ) . '">Enter the CSS selector for the element that will be clicked to expand and collapse the slider</label>
-			<input style="width: 100%" id="' . $this->get_field_id( 'button' ) . '" name="' . $this->get_field_name( 'button' ) . '" placeholder="' . $button . '" />
+			<label for="' . $this->get_field_id( 'button' ) . '">Enter text to be shown in button that expands and shirinks the slider</label>
+			<input style="width: 100%" id="' . $this->get_field_id( 'button' ) . '" name="' . $this->get_field_name( 'button' ) . '" value="' . $button . '" />
+		</p>';
+		echo '
+		<p>
+			<label for="' . $this->get_field_id( 'alttext' ) . '">Optional - Enter text to be shown in button when slider is open</label>
+			<input style="width: 100%" id="' . $this->get_field_id( 'alttext' ) . '" name="' . $this->get_field_name( 'alttext' ) . '" value="' . $alttext . '" />
 		</p>';
 		echo '
 		<p>
@@ -334,6 +343,7 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
     	// Fields
     	$instance['target'] = trim( $new_instance['target'] );
     	$instance['button'] = trim( $new_instance['button'] );
+    	$instance['alttext'] = trim( $new_instance['alttext'] );
     	$instance['top_content'] = base64_encode( trim( $new_instance['top_content'] ) );
     	$instance['bottom_content'] = base64_encode( trim( $new_instance['bottom_content'] ) );
     	return $instance;
