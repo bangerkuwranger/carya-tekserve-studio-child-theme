@@ -155,7 +155,7 @@ body.tekserve-studio {
 
 	.tekserve-studio .navigation .logo a,
 	.tekserve-studio .menu > li a {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 }
@@ -199,6 +199,34 @@ body.tekserve-studio {
 	font-size: 28px;
 	text-align: justify;
 }
+
+.tekserve-studio.page .content article .h2container {
+	background: url('./images/40pxgreycenter.png');
+	background-repeat-x: repeat;
+	background-repeat-y: no-repeat;
+	text-align: center;
+}
+
+.tekserve-studio.page .content article .h2container h2 {
+	text-align: center;
+	font-weight: 200;
+	font-size: 28px;
+	background: #fff;
+	margin: 0;
+	padding: 0 1em;
+	display: inline-block;
+}
+
+/* 
+.tekserve-studio.page .content article h2:before,
+.tekserve-studio.page .content article h2:after {
+	content: '';
+	min-width: 	2em;
+	border-top: 2px solid #000;
+	display: inline-block;
+	margin: 0 .5em .25em;
+}
+ */
 
 
 
@@ -314,5 +342,44 @@ body.tekserve-studio {
 	.tekserve-studio .container {
 		width: 1280px;
 	}
+
+}
+
+@media (max-width: 991px) {
+
+	.tekserve-studio.page .content article p,
+	.tekserve-studio.page .content article [class*='col-'] {
+		text-align: left;
+	}
+
+}
+
+@media (max-width: 768px) {
+
+	.tekserve-studio.page .content article p,
+	.tekserve-studio.page .content article [class*='col-'] {
+		font-size: 18px;
+	}
+	
+	.tekserve-studio h1,
+	.tekserve-studio .category-title {
+		font-size: 36px;
+	}
+	
+	.tekserve-studio .category-title:after,
+	.tekserve-studio .category-title {
+		text-align: left;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.tekserve-studio h2 {
+		font-size: 28px;
+	}
+	
+	.tekserve-studio h3 {
+		font-size: 24px;
+	}
+
 
 }
