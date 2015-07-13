@@ -77,6 +77,7 @@ function tekserve_studio_override_carya_inline_styling() {
 		'menu_active'	=> '',
 		'footer_bg'		=> '',
 		'footer_color'	=> '',
+		'theme_color'	=> '',
 	
 	);
 	
@@ -120,7 +121,7 @@ function tekserve_studio_override_carya_inline_styling() {
         .tekserve-studio .footer { background: transparent; }
         <?php 
         $footer_bg_styles = 'background-color: #';
-        $footer_bg_colors = cAc_css2rgba( $option_values['footer_bg'], '0.8' );
+        $footer_bg_colors = cAc_css2rgba( $option_values['footer_bg'], '0.9' );
         $footer_bg_styles .= $footer_bg_colors['hex'] . ';
         background-color: ';
         $footer_bg_styles .= $footer_bg_colors['rgba'] . ';';
@@ -130,6 +131,18 @@ function tekserve_studio_override_carya_inline_styling() {
     <?php if( !empty( $option_values['footer_color'] ) ): ?>
         .tekserve-studio .footer { color: #444; }
         .tekserve-studio .footer .fixed-footer { color: <?php echo esc_attr( $option_values['footer_color'] ); ?>; }
+    <?php endif ?>
+    <?php if( !empty( $option_values['theme_color'] ) ): ?>
+    	.tekserve-studio.page article p .btn.btn-outline,
+    	.tekserve-studio.page article [class*='col-'] .btn.btn-outline {
+    		background: <?php echo esc_attr( $option_values['theme_color'] ) ?>;
+    		color: #fff;
+    	}
+    	.tekserve-studio.page article p .btn.btn-outline:hover,
+    	.tekserve-studio.page article [class*='col-'] .btn.btn-outline:hover {
+    		background: #fff;
+    		color: <?php echo esc_attr( $option_values['theme_color'] ) ?>;
+    	}
     <?php endif ?>
 	</style>
 	<?php

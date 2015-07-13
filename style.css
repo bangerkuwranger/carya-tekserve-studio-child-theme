@@ -193,10 +193,29 @@ body.tekserve-studio {
 
 /*** Single Page ***/
 
-.tekserve-studio.page .content article p {
+.tekserve-studio.page .content article p,
+.tekserve-studio.page .content article [class*='col-'] {
 	font-weight: 200;
 	font-size: 28px;
 	text-align: justify;
+}
+
+
+
+/*** Form ***/
+
+.tekserve-studio.page .content article form p {
+  font-weight: 600;
+  font-size: 14px;
+  color: #074E70;
+}
+
+.tekserve-studio.page .content article form textarea {
+	max-height: 8em;
+}
+
+.tekserve-studio.page .content article form .req {
+	color: #EF7040;
 }
 
 
@@ -208,7 +227,7 @@ body.tekserve-studio {
 }
 
 .tekserve-studio .footer .legal {
-	margin-bottom: 120px;
+	margin-bottom: 140px;
 }
 
 .tekserve-studio .footer .fixed-footer {
