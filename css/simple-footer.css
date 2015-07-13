@@ -1,0 +1,101 @@
+.fixed-footer.show-footer {
+	transition: min-height .25s ease-in-out;
+	min-height: 1em;
+/* 	height: 100px; */
+	padding: .5em 0;
+	position: relative;
+}
+
+.fixed-footer .tekserve-studio-simple-footer-left {
+	max-width: 60%;
+	margin-bottom: .5em;
+	padding-top: .15em;
+	display: inline-block;
+	font-size: .9em;
+}
+
+.fixed-footer .tekserve-studio-simple-footer-right {
+	display: inline-block;
+	text-align: right;
+	float: right;
+	margin-right: 2em;
+}
+
+.fixed-footer .tekserve-studio-simple-footer-right > * {
+	text-align: left;
+}
+
+.fixed-footer .mc_merge_var {
+	display: inline;
+	margin: 0 0 0 1em;
+}
+
+#mc_signup_form input {
+  width: auto;
+  padding: .5em 1em;
+  display: inline;
+}
+
+#mc_signup_form .mc_var_label {
+	display: none;
+}
+
+.fixed-footer #mc_signup_submit, .fixed-footer .mc_signup_submit {
+	text-align: left;
+	display: inline;
+	width: auto;
+	margin: 0;
+}
+
+.fixed-footer .tekserve-studio-simple-footer-close {
+	max-width: 1em;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	margin-left: 1em;
+	font-weight: 200;
+}
+
+@media (min-width: 1400px) {
+
+	.fixed-footer .tekserve-studio-simple-footer-left {
+		font-size: 1.1em;
+	}
+
+}
+
+@media (max-width: 1024px) {
+
+	.fixed-footer .tekserve-studio-simple-footer-left {
+		font-size: .75em;
+		padding-top: .25em;
+		max-width: 40%;
+	}
+	
+}
+
+@media (max-width: 768px) {
+
+	.fixed-footer .tekserve-studio-simple-footer-left,
+	.fixed-footer .tekserve-studio-simple-footer-right {
+		width: 90%;
+		max-width: 90%;
+		text-align: left;
+	}
+	
+	.widget_tekserve_studio_simple_footer {
+		text-align: center;
+	}
+	
+	.fixed-footer .mc_signup_submit {
+		margin: 1em 0 0 1em;
+		display: inline-block;
+	}
+	
+	.fixed-footer .tekserve-studio-simple-footer-close {
+		right: 1em;
+	}
+
+}

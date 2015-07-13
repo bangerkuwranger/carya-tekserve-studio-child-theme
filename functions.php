@@ -125,7 +125,7 @@ function tekserve_studio_override_carya_inline_styling() {
         .tekserve-studio .footer { background: transparent; }
         <?php 
         $footer_bg_styles = 'background-color: #';
-        $footer_bg_colors = cAc_css2rgba( $option_values['footer_bg'], '0.8' );
+        $footer_bg_colors = cAc_css2rgba( $option_values['footer_bg'], '0.95' );
         $footer_bg_styles .= $footer_bg_colors['hex'] . ';
         background-color: ';
         $footer_bg_styles .= $footer_bg_colors['rgba'] . ';';
@@ -373,11 +373,174 @@ class Tekserve_Studio_Sliding_Footer_Widget extends WP_Widget {
 	
 } //end class Tekserve_Studio_Sliding_Footer_Widget
 
+
+
+/***
+	Widget Class for Simple Footer
+***/
+
+class Tekserve_Studio_Simple_Footer_Widget extends WP_Widget {
+
+
+
+	public function __construct() {
+	
+		// widget actual processes
+		parent::__construct(
+			'tekserve_studio_simple_footer', // Base ID
+			__('Simple Footer Form'), // Name
+			array( 'description' => 'Shows a email sign up form, with preceding text, at the bottom of the page. Close button keeps hidden for user session; submission of form hides permanently.' ) // Args
+		);
+		
+		// include js
+		add_action( 'wp_enqueue_scripts', array( &$this, 'js' ) );
+		
+	}	//end __construct()
+	
+	
+
+	public function widget( $args, $instance ) {
+	
+		extract( $args );
+		
+		$mailchimp = false;
+		
+		// these are the widget options
+		if( $instance['button'] ) {
+		
+			$button = trim( $instance['button'] );
+			
+		}
+		else {
+		
+			$button = 'Submit';
+	
+		}	//end if( $instance['button'] )
+		if( $instance['text'] ) {
+		
+			$text = trim( base64_decode( $instance['text'] ) );
+			
+		}
+		else {
+		
+			$text = '<span>We equip startups for growth. Join our mailing list for updates.</span>';
+	
+		}	//end if( $instance['text'] )
+		
+		echo $before_widget;
+		
+		// Display the widget
+		 
+		//left text
+		echo '
+		<div class="tekserve-studio-simple-footer-left">
+			' . $text . '
+		</div>';
+		
+		//the form content iteself
+		echo '
+		<div class="tekserve-studio-simple-footer-right">';
+				if( function_exists( 'mailchimpSF_signup_form' ) ) {
+				
+					mailchimpSF_signup_form();
+					$mailchimp = true;
+				
+				}
+				else {
+				
+					echo '<form class="tekserve-studio-simple-footer-form">
+						<input type="email" name="tekserve-studio-simple-footer-email" id="tekserve-studio-simple-footer-email" placeholder="email address" />
+						<button class "btn btn-outline" type="submit">' . $button . '</button>
+					</form>';
+				
+				}	//end if( function_exists( 'mailchimpSF_signup_form' ) )
+				
+		echo '
+		</div>';
+		
+		//the close button
+		echo '
+		<div class="tekserve-studio-simple-footer-close">
+			<i class="fa fa-times"></i>
+		</div>';
+		
+		echo $after_widget;
+		
+	}	//end widget( $args, $instance )
+	
+	
+
+ 	public function form( $instance ) {
+ 	
+		// outputs the options form on admin
+		
+		// check values
+		if( $instance) {
+		
+			 $button = trim( $instance['button'] );
+			 $text = trim( base64_decode( $instance['text'] ) );
+		
+		}
+		else {
+		
+			 $button = 'Submit';
+			 $text = '<span>We equip startups for growth. Join our mailing list for updates.</span>';
+		
+		}	//end if( $instance)
+		
+		//output form
+		echo '
+		<p>
+			<label for="' . $this->get_field_id( 'button' ) . '">Enter text to be shown in submit button</label>
+			<input style="width: 100%" id="' . $this->get_field_id( 'button' ) . '" name="' . $this->get_field_name( 'button' ) . '" value="' . $button . '" />
+		</p>';
+		echo '
+		<p>
+			<label for="' . $this->get_field_id( 'text' ) . '">Enter text to be shown to the left of the form</label>
+			<input style="width: 100%" id="' . $this->get_field_id( 'text' ) . '" name="' . $this->get_field_name( 'text' ) . '" value="' . $text . '" />
+		</p>';
+		
+	}	//end form( $instance )
+
+
+
+
+	public function update( $new_instance, $old_instance ) {
+
+		// processes widget options to be saved
+		$instance = $old_instance;
+    	// Fields
+    	$instance['button'] = trim( $new_instance['button'] );
+    	$instance['text'] = base64_encode( trim( $new_instance['text'] ) );
+    	return $instance;
+
+	}	//end update( $new_instance, $old_instance )
+	
+	
+	
+	public function js() {
+	
+		// enqueues scripts if present
+		if( is_active_widget( false, false, $this->id_base, true ) ) {
+	   
+		   wp_enqueue_script( 'tekservestudio_simplefooter', get_stylesheet_directory_uri() . '/js/simple-footer.js', array( 'jquery' ) );
+		   wp_enqueue_style( 'tekservestudio_simplefooter', get_stylesheet_directory_uri() . '/css/simple-footer.css' );
+	   
+		}  //end if( is_active_widget( false, false, $this->id_base, true ) ) 
+    
+    } //end js()
+    
+    
+	
+} //end class Tekserve_Studio_Sliding_Footer_Widget
+
+
 /** register widgets with wp **/
 
 add_action( 'widgets_init', function(){
 
      register_widget( 'Tekserve_Studio_Sliding_Footer_Widget' );
+     register_widget( 'Tekserve_Studio_Simple_Footer_Widget' );
      
 }); //end add_action( 'widgets_init', function()
 

@@ -248,6 +248,39 @@ body.tekserve-studio {
 
 
 
+/*** Twitter Feed ***/
+
+.aptf-tweets-wrapper {
+	font-size: 16px;
+	padding: 0 2em;
+	font-weight: 400;
+}
+
+.tekserve-studio.page .content article p.aptf-timestamp {
+	font-size: 18px;
+}
+
+.tekserve-studio .aptf-follow-btn {
+	background: #074E70;
+	border-radius: 0;
+	border: 0;
+	color: #fff;
+	font-weight: 400;
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+	
+}
+
+.tekserve-studio .aptf-follow-btn i {
+	background: transparent;
+	font: normal normal normal 14px/1 FontAwesome
+}
+
+.tekserve-studio .aptf-follow-btn i:before {
+	content: "\f099";
+}
+
+
+
 /*** Footer ***/
 
 .tekserve-studio .footer {
