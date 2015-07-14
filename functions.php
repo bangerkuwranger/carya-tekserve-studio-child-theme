@@ -547,6 +547,185 @@ add_action( 'widgets_init', function(){
 
 
 /***
+	Shortcode to Display Tribe Events
+***/
+
+//specific excerpt length
+function tekserve_studio_excerpt_length( $length ) {
+
+	return 30;
+
+}
+
+
+//check that tribe plugin is installed before creating shortcode
+add_action( 'after_setup_theme', 'create_tribe_upcoming_events_shortcode' );
+function create_tribe_upcoming_events_shortcode() {
+
+	if( function_exists( 'tribe_event_featured_image' ) ) {
+	
+		add_shortcode( 'upcomingevents', 'tribe_upcoming_events' );
+	
+	}	//end if( function_exists( 'tribe_event_featured_image' ) )
+
+}	//end create_tribe_upcoming_events_shortcode()
+
+//code for the shortcode itself
+function tribe_upcoming_events( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'number'	=> 3,
+			'usecols'	=> true,
+			'cols'		=> 3,
+		), $atts )
+	);
+
+	// Code
+	add_filter( 'excerpt_length', 'tekserve_studio_excerpt_length', 999 );
+	$html = '<div id="tribe-events-content" class="tekserve-studio-tribe-events tribe-events-list tribe-events-photo">
+		<div class="tribe-events-loop hfeed vcalendar tribe-clearfix" id="tribe-events-photo-events">';
+	$args = array(
+
+		'post_type'			=> 'tribe_events',
+		'post_status'		=> 'publish',
+		'posts_per_page'	=> $number,
+
+	);
+	$the_query = new WP_Query( $args );
+
+	// The Loop
+	if( $the_query->have_posts() ) {
+
+	
+
+		if( $usecols ) {
+
+			if( intval( $cols ) > 12 ) {
+		
+				$cols = intval( $cols/12 );
+		
+			}	//end if( intval( $cols ) > 12 )
+			$colsize= intval( 12/$cols );
+			$coltag = '[column size="' . $colsize . '" col_class="md"]';
+			$i = 0;
+			while( $the_query->have_posts() ) {
+		
+				$post = $the_query->the_post();
+
+				if( $i == 0 ) {
+			
+					$html .= '[row]';
+			
+				}	//end if( $i == 0 )
+
+				$html .= $coltag;
+			
+				$html .= '<div class="tribe-events-photo-event-wrap">';
+				$html .= tribe_event_featured_image( null, 'medium' );
+				$html .= '<div class="tribe-events-event-details tribe-clearfix">';
+				$html .= print_r( do_action( 'tribe_events_before_the_event_title' ), true );
+				$html .= '<h3 class="tribe-events-list-event-title entry-title summary">';
+				$html .= '<a class="url" href="' . esc_url( tribe_get_event_link() ) . '" title="' . the_title( '', '', false ) . '" rel="bookmark">';
+				$html .= the_title( '', '', false );
+				$html .= '</a></h3>';
+				$html .= print_r( do_action( 'tribe_events_after_the_event_title' ), true);
+				$html .= print_r( do_action( 'tribe_events_before_the_meta' ), true );
+				$html .= '<div class="tribe-events-event-meta">
+								<div class="updated published time-details">';
+				if( ! empty( $post->distance ) ) {
+			
+				$html .= '<strong>[' . tribe_get_distance_with_unit( $post->distance ) . ']</strong>';
+			
+				}	//end if( ! empty( $post->distance ) )
+				$html .=  tribe_events_event_schedule_details();
+				$html .= '</div>
+					</div>';
+				$html .=  print_r( do_action( 'tribe_events_after_the_meta' ), true );
+				$html .= print_r( do_action( 'tribe_events_before_the_content' ), true );
+				$html .= '<div class="tribe-events-list-photo-description tribe-events-content entry-summary description">';
+				$html .= tribe_events_get_the_excerpt();
+				$html .= '</div>';
+				$html .= print_r( do_action( 'tribe_events_after_the_content' ), true );
+				$html .= '	</div>
+				</div>';
+			
+				$html .= '[/column]';
+				if( $i == intval( $cols-1 ) ) {
+			
+					$html .= '[/row]';
+			
+				}	//end if( $i == intval( $cols-1 ) )
+				if( $i < $cols ) {
+			
+					$i++;
+
+				}
+				else {
+			
+					$i = 0;
+			
+				}	//end if( $i < $cols )
+		
+			}	//end while( $the_query->have_posts() )
+	
+		}
+		else {
+	
+			while( $the_query->have_posts() ) {
+		
+				$post = $the_query->the_post();
+		
+				$html .= '<div class="tribe-events-photo-event-wrap">';
+				$html .= tribe_event_featured_image( null, 'medium' );
+				$html .= '<div class="tribe-events-event-details tribe-clearfix">';
+				$html .= print_r( do_action( 'tribe_events_before_the_event_title' ), true );
+				$html .= '<h3 class="tribe-events-list-event-title entry-title summary">';
+				$html .= '<a class="url" href="' . esc_url( tribe_get_event_link() ) . '" title="' . the_title( '', '', false ) . '" rel="bookmark">';
+				$html .= the_title( '', '', false );
+				$html .= '</a></h3>';
+				$html .= print_r( do_action( 'tribe_events_after_the_event_title' ), true);
+				$html .= print_r( do_action( 'tribe_events_before_the_meta' ), true );
+				$html .= '<div class="tribe-events-event-meta">
+								<div class="updated published time-details">';
+				if( ! empty( $post->distance ) ) {
+			
+				$html .= '<strong>[' . tribe_get_distance_with_unit( $post->distance ) . ']</strong>';
+			
+				}	//end if( ! empty( $post->distance ) )
+				$html .=  tribe_events_event_schedule_details();
+				$html .= '</div>
+					</div>';
+				$html .=  print_r( do_action( 'tribe_events_after_the_meta' ), true );
+				$html .= print_r( do_action( 'tribe_events_before_the_content' ), true );
+				$html .= '<div class="tribe-events-list-photo-description tribe-events-content entry-summary description">';
+				$html .= tribe_events_get_the_excerpt();
+				$html .= '</div>';
+				$html .= print_r( do_action( 'tribe_events_after_the_content' ), true );
+				$html .= '	</div>
+				</div>';
+		
+			}	//end while( $the_query->have_posts() )
+
+		}	//end if( $usecols )
+
+	}
+	else {
+
+		return '<h3 class="error">There are currently no upcoming events.</h3>';
+
+	}	//end if( $the_query->have_posts() )
+
+	$html .= '	</div>
+	</div>';
+	return do_shortcode( $html );
+
+}	//endtribe_upcoming_events( $atts )
+
+
+
+/***
 	Utility function to convert css color values
 ***/
 

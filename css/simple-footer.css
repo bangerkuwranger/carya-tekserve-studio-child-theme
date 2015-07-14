@@ -51,7 +51,7 @@
 	max-width: 1em;
 	display: inline-block;
 	position: absolute;
-	top: 0;
+	top: .25em;
 	right: 0;
 	cursor: pointer;
 	margin-left: 1em;
@@ -59,7 +59,7 @@
 }
 
 input#mc_mv_EMAIL {
-  text-transform: none;
+	text-transform: none;
 }
 
 @media (min-width: 1400px) {
