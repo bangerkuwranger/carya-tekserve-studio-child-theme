@@ -194,20 +194,22 @@ body.tekserve-studio {
 /*** Single Page ***/
 
 .tekserve-studio.page .content article p,
-.tekserve-studio.page .content article [class*='col-'] {
+.tekserve-studio.page .content article [class*='col-'],
+.tekserve-studio.page .content .item-wrap-slug-text p {
 	font-weight: 200;
 	font-size: 28px;
 	text-align: justify;
 }
 
-.tekserve-studio.page .content article .h2container {
+.tekserve-studio.page .content .h2container {
 	background: url('./images/40pxgreycenter.png');
 	background-repeat-x: repeat;
 	background-repeat-y: no-repeat;
+	background-repeat: repeat-x;
 	text-align: center;
 }
 
-.tekserve-studio.page .content article .h2container h2 {
+.tekserve-studio.page .content .h2container h2 {
 	text-align: center;
 	font-weight: 200;
 	font-size: 28px;
@@ -232,17 +234,20 @@ body.tekserve-studio {
 
 /*** Form ***/
 
-.tekserve-studio.page .content article form p {
+.tekserve-studio.page .content article form p,
+.tekserve-studio.page .content #velocity-page-wrapper form p {
   font-weight: 600;
   font-size: 14px;
   color: #074E70;
 }
 
-.tekserve-studio.page .content article form textarea {
+.tekserve-studio.page .content article form textarea,
+.tekserve-studio.page .content #velocity-page-wrapper form textarea {
 	max-height: 8em;
 }
 
-.tekserve-studio.page .content article form .req {
+.tekserve-studio.page .content article form .req,
+.tekserve-studio.page .content #velocity-page-wrapper form .req {
 	color: #EF7040;
 }
 
@@ -256,7 +261,8 @@ body.tekserve-studio {
 	font-weight: 400;
 }
 
-.tekserve-studio.page .content article p.aptf-timestamp {
+.tekserve-studio.page .content article p.aptf-timestamp,
+.tekserve-studio.page .content p.aptf-timestamp {
 	font-size: 18px;
 }
 
@@ -417,7 +423,8 @@ body.tekserve-studio {
 @media (max-width: 991px) {
 
 	.tekserve-studio.page .content article p,
-	.tekserve-studio.page .content article [class*='col-'] {
+	.tekserve-studio.page .content article [class*='col-'],
+	.tekserve-studio.page .content .item-wrap-slug-text p {
 		text-align: left;
 	}
 	
@@ -430,7 +437,8 @@ body.tekserve-studio {
 @media (max-width: 768px) {
 
 	.tekserve-studio.page .content article p,
-	.tekserve-studio.page .content article [class*='col-'] {
+	.tekserve-studio.page .content article [class*='col-'],
+	.tekserve-studio.page .content .item-wrap-slug-text p {
 		font-size: 18px;
 	}
 	
