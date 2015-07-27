@@ -28,6 +28,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /*** Default Typography Overrides ***/
 
+@font-face {
+  font-family: 'WebSymbols-Regular';
+  src: url('./fonts/WebSymbols-Regular.eot?') format('eot'), url('./fonts/WebSymbols-Regular.woff') format('woff'), url('./fonts/WebSymbols-Regular.ttf') format('truetype');
+}
+
 body.tekserve-studio {
 	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
 	font-weight: 300;
@@ -229,6 +234,24 @@ body.tekserve-studio {
 	margin: 0 .5em .25em;
 }
  */
+ 
+ .tekserve-studio .btn,
+ .tekserve-studio a,
+ .tekserve-studio input[type="submit"] {
+ 	transition: all .25s ease-in-out;
+ }
+ 
+@media (max-width: 500px) {
+
+	.tekserve-studio.page .content .h2container {
+		background: transparent;
+	}
+	
+	.tekserve-studio.page .content .h2container h2 {
+		padding: 0;
+	}
+
+}
 
 
 
@@ -273,7 +296,11 @@ body.tekserve-studio {
 	color: #fff;
 	font-weight: 400;
 	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
-	
+	transition: all .25s ease-in-out;
+}
+
+.tekserve-studio .aptf-follow-btn:hover {
+	background: #EF7040;
 }
 
 .tekserve-studio .aptf-follow-btn i {
@@ -285,9 +312,79 @@ body.tekserve-studio {
 	content: "\f099";
 }
 
+.tekserve-studio a.aptf-follow-link {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+.tekserve-studio .aptf-center-align {
+	min-height: 620px;
+}
+
+.tekserve-studio .aptf-tweet-content a {
+	color: #074E70 !important;
+}
+
+.tekserve-studio .aptf-tweet-content a:hover {
+	color: #EF7040 !important;
+}
+
+@media (max-width: 991px) {
+
+	.tekserve-studio a.aptf-follow-link {
+		position: static;
+	}
+
+}
+
+
+
+/*** Instagram Feed ***/
+
+.tekserve-studio #sb_instagram .sbi_follow_btn a {
+	background: #074E70;
+	border-radius: 0;
+	border: 0;
+	color: #fff;
+	font-weight: 400;
+	font-family: 'Gotham SSm A', 'Gotham SSm B', 'Montserrat', Arial, sans-serif;
+	height: 40px;
+	padding-top: 10px;
+	transition: all .25s ease-in-out;
+}
+
+.tekserve-studio #sb_instagram .sbi_follow_btn a:hover {
+	background: #EF7040;
+}
+
+.tekserve-studio #sb_instagram {
+	min-height: 620px;
+}
+
+.tekserve-studio #sb_instagram #sbi_load {
+	float: none;
+	position: absolute;
+	bottom: 0;
+}
+
+@media (max-width: 991px) {
+
+	.tekserve-studio #sb_instagram #sbi_load {
+		float: left;
+		position: static;
+	}
+	
+}
+
 
 
 /*** Upcoming Events ***/
+
+#tribe-events-content.tekserve-studio-tribe-events {
+	margin: 2em 0 1em;
+}
 
 .tekserve-studio-tribe-events .tribe-events-photo-event-wrap {
 	max-width: 300px;
@@ -369,10 +466,12 @@ body.tekserve-studio {
 
 .tekserve-studio .footer .fixed-footer .row {
 	margin: 0 auto;
-	
 }
 
-
+.fixed-footer #mc_signup_submit:hover {
+	color: #fff;
+	background-color: #074E70;
+}
 
 
 
@@ -431,6 +530,11 @@ body.tekserve-studio {
 	.tekserve-studio.page .content article [class*='col-'] {
 		margin-bottom: 1em;
 	}
+	
+	.tekserve-studio .item-area-wrap {
+		clear: both;
+		width: 100%;
+	}
 
 }
 
@@ -467,6 +571,10 @@ body.tekserve-studio {
 	.tekserve-studio h3 {
 		font-size: 24px;
 	}
-
+	
+	.tekserve-studio .row .row {
+		max-width: 100%;
+		margin: 0 auto;
+	}
 
 }
